@@ -17,8 +17,11 @@
 script = ExtResource( 6 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 11 )]
+offset = Vector2( 0, 0 )
+transform = Transform2D( 0.8, 0, 0, 0.8, 0, 0 )
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, -1137.73 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 128, 128 )
 collision_layer = 2
@@ -28,12 +31,12 @@ tile_data = PoolIntArray( 196619, 10, 0, 196620, 9, 0, 196623, 9, 0, 196626, 9, 
 [node name="Spikemen" type="Node" parent="."]
 
 [node name="Spikeman" parent="Spikemen" instance=ExtResource( 10 )]
-position = Vector2( 2090.47, 300.604 )
+position = Vector2( 2090.47, -895.771 )
 
 [node name="Coins" type="Node" parent="."]
 
 [node name="CoinsGroup1" type="Node2D" parent="Coins"]
-position = Vector2( 962.185, 775.03 )
+position = Vector2( 962.185, -386.157 )
 
 [node name="Coin3" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
 position = Vector2( 125.815, 63.1709 )
@@ -54,7 +57,7 @@ position = Vector2( -2.18463, 63.1709 )
 position = Vector2( -130.185, 63.1709 )
 
 [node name="CoinsGroup2" type="Node2D" parent="Coins"]
-position = Vector2( 4409.38, 774.13 )
+position = Vector2( 4409.38, -387.057 )
 
 [node name="Coin3" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
 position = Vector2( 125.815, 63.1709 )
@@ -75,7 +78,7 @@ position = Vector2( -2.18463, 63.1709 )
 position = Vector2( -130.185, 63.1709 )
 
 [node name="CoinsGroup3" type="Node2D" parent="Coins"]
-position = Vector2( 2139.75, -237.006 )
+position = Vector2( 2139.75, -1398.19 )
 
 [node name="Coin8" parent="Coins/CoinsGroup3" instance=ExtResource( 8 )]
 position = Vector2( 125.71, 7.7002 )
@@ -87,10 +90,10 @@ position = Vector2( -2.28955, 7.7002 )
 position = Vector2( -130.29, 7.7002 )
 
 [node name="Portal" parent="." instance=ExtResource( 12 )]
-position = Vector2( 4041.04, 806.461 )
+position = Vector2( 4041.04, -366.456 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 526.971, 782.63 )
+position = Vector2( 526.971, -377.779 )
 
 [node name="Gui" parent="." instance=ExtResource( 7 )]
 layer = 0

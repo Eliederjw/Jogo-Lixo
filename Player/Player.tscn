@@ -39,6 +39,8 @@ position = Vector2( 0, 16.6458 )
 shape = SubResource( 1 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
+animation = "idle0"
+frame = 1
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 light_mask = 0
