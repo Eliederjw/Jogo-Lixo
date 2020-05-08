@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Chiptune_Adventures_2.ogg-997e8685fba41284d2f8426e1f8e449f.oggstr"
+
+[deps]
+
+source_file="res://SFX/Chiptune_Adventures_2.ogg"
+dest_files=[ "res://.import/Chiptune_Adventures_2.ogg-997e8685fba41284d2f8426e1f8e449f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

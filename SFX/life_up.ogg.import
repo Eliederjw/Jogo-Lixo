@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/life_up.ogg-bd7ce565f1de2fb6688176a850d79fd6.oggstr"
+
+[deps]
+
+source_file="res://SFX/life_up.ogg"
+dest_files=[ "res://.import/life_up.ogg-bd7ce565f1de2fb6688176a850d79fd6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

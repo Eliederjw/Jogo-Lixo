@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Screens/Pause.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Pause_Screen" type="CanvasLayer"]
+layer = 100
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.133333, 0.141176, 0.203922, 0.498039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/CenterContainer"]
+margin_left = 692.0
+margin_top = 345.0
+margin_right = 1555.0
+margin_bottom = 734.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContinue" type="CenterContainer" parent="Pause/CenterContainer/VBoxContainer"]
+margin_right = 863.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Continue" type="LinkButton" parent="Pause/CenterContainer/VBoxContainer/CenterContinue"]
+margin_left = 139.0
+margin_right = 724.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.176471, 0.513726, 0.0705882, 1 )
+text = "CONTINUE"
+underline = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterStartMenu" type="CenterContainer" parent="Pause/CenterContainer/VBoxContainer"]
+margin_top = 131.0
+margin_right = 863.0
+margin_bottom = 258.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StartMenu" type="LinkButton" parent="Pause/CenterContainer/VBoxContainer/CenterStartMenu"]
+margin_right = 863.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.133333, 0.203922, 0.45098, 1 )
+text = "MENU INICIAL"
+underline = 2
+
+[node name="CenterQuit" type="CenterContainer" parent="Pause/CenterContainer/VBoxContainer"]
+margin_top = 262.0
+margin_right = 863.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Quit" type="LinkButton" parent="Pause/CenterContainer/VBoxContainer/CenterQuit"]
+margin_left = 24.0
+margin_right = 838.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.74902, 0.223529, 0.0392157, 1 )
+text = "SAIR DO JOGO"
+underline = 2
+[connection signal="pressed" from="Pause/CenterContainer/VBoxContainer/CenterContinue/Continue" to="Pause" method="_on_Continue_pressed"]
+[connection signal="pressed" from="Pause/CenterContainer/VBoxContainer/CenterStartMenu/StartMenu" to="Pause" method="_on_StartMenu_pressed"]
+[connection signal="pressed" from="Pause/CenterContainer/VBoxContainer/CenterQuit/Quit" to="Pause" method="_on_Quit_pressed"]

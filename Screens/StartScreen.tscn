@@ -1,0 +1,204 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Screens/StartScreen.gd" type="Script" id=1]
+[ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://GFX/Players/trash2_stand.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Players/trash1_stand.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Players/trash1_selected.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Players/trash2_selected.png" type="Texture" id=7]
+[ext_resource path="res://SFX/Sound FXs001.ogg" type="AudioStream" id=8]
+[ext_resource path="res://SFX/Sound FXs002.ogg" type="AudioStream" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 150
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="StageScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxFiller" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 2248.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxlblChose" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 76.0
+margin_right = 2248.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxlblChose"]
+margin_right = 2248.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxlblChose/CenterContainer"]
+margin_left = 633.0
+margin_top = 21.0
+margin_right = 1615.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Escolha seu personagem"
+
+[node name="HBoxBunnies" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 224.0
+margin_right = 2248.0
+margin_bottom = 658.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+size_flags_stretch_ratio = 3.0
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxBunnies"]
+margin_right = 559.0
+margin_bottom = 434.0
+size_flags_horizontal = 3
+
+[node name="bunny1" type="TextureButton" parent="VBoxContainer/HBoxBunnies"]
+margin_left = 563.0
+margin_right = 1122.0
+margin_bottom = 434.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="bunny2" type="TextureButton" parent="VBoxContainer/HBoxBunnies"]
+margin_left = 1126.0
+margin_right = 1685.0
+margin_bottom = 434.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxBunnies"]
+margin_left = 1689.0
+margin_right = 2248.0
+margin_bottom = 434.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxNewGame" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 662.0
+margin_right = 2248.0
+margin_bottom = 806.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxNewGame"]
+margin_left = 871.0
+margin_right = 1377.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bttNewGame" type="LinkButton" parent="VBoxContainer/HBoxNewGame/CenterContainer"]
+margin_top = 8.0
+margin_right = 506.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.921569, 0.941176, 0.913725, 1 )
+text = "Novo Jogo"
+underline = 2
+
+[node name="HBoxContinue" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 810.0
+margin_right = 2248.0
+margin_bottom = 1001.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/HBoxContinue"]
+margin_left = 806.0
+margin_right = 1442.0
+margin_bottom = 191.0
+
+[node name="bttContinue" type="LinkButton" parent="VBoxContainer/HBoxContinue/CenterContainer2" groups=[
+"bttContinue",
+]]
+margin_right = 636.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.176471, 0.513726, 0.0705882, 1 )
+text = "Continue"
+underline = 2
+
+[node name="HBoxFiller2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 1005.0
+margin_right = 2248.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="JogarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+[connection signal="pressed" from="VBoxContainer/HBoxBunnies/bunny1" to="." method="_on_bunny1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxBunnies/bunny2" to="." method="_on_bunny2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxNewGame/CenterContainer/bttNewGame" to="." method="_on_bttNewGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContinue/CenterContainer2/bttContinue" to="." method="_on_bttContinue_pressed"]
+[connection signal="finished" from="JogarSound" to="." method="_on_JogarSound_finished"]

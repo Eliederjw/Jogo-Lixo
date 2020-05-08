@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Screens/StageScreen.gd" type="Script" id=1]
+[ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 150
+font_data = ExtResource( 3 )
+
+[node name="StageScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 550.0
+margin_top = 379.0
+margin_right = 1369.0
+margin_bottom = 701.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 819.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.133333, 0.203922, 0.45098, 1 )
+text = "NEXT LEVEL"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 131.0
+margin_right = 819.0
+margin_bottom = 322.0
+alignment = 1
+
+[node name="bttRestart" type="LinkButton" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 211.0
+margin_right = 607.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.176471, 0.513726, 0.0705882, 1 )
+text = "Jogar"
+underline = 2
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/bttRestart" to="." method="_on_bttRestart_pressed"]

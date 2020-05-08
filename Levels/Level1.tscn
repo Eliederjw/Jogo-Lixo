@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/TileSet.tres" type="TileSet" id=2]
+[ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/GameState.gd" type="Script" id=6]
+[ext_resource path="res://Gui/Gui.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SFX/life_up.ogg" type="AudioStream" id=9]
+[ext_resource path="res://NPCs/Spikeman.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SFX/BGM.gd" type="Script" id=13]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 11 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 196619, 10, 0, 196620, 9, 0, 196623, 9, 0, 196626, 9, 0, 196629, 11, 0, 458752, 10, 0, 458753, 9, 0, 458755, 9, 0, 458758, 9, 0, 458761, 9, 0, 458764, 11, 0, 458772, 10, 0, 458773, 9, 0, 458776, 9, 0, 458779, 9, 0, 458782, 9, 0, 458785, 9, 0, 458788, 11, 0 )
+
+[node name="Spikemen" type="Node" parent="."]
+
+[node name="Spikeman" parent="Spikemen" instance=ExtResource( 10 )]
+position = Vector2( 2090.47, 300.604 )
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="CoinsGroup1" type="Node2D" parent="Coins"]
+position = Vector2( 962.185, 775.03 )
+
+[node name="Coin3" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
+position = Vector2( 125.815, 63.1709 )
+
+[node name="Coin4" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
+position = Vector2( -66.1846, -0.829132 )
+
+[node name="Coin5" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
+position = Vector2( 61.8154, -0.829132 )
+
+[node name="Coin6" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
+position = Vector2( -2.18463, -64.8291 )
+
+[node name="Coin2" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
+position = Vector2( -2.18463, 63.1709 )
+
+[node name="Coin13" parent="Coins/CoinsGroup1" instance=ExtResource( 8 )]
+position = Vector2( -130.185, 63.1709 )
+
+[node name="CoinsGroup2" type="Node2D" parent="Coins"]
+position = Vector2( 4409.38, 774.13 )
+
+[node name="Coin3" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
+position = Vector2( 125.815, 63.1709 )
+
+[node name="Coin4" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
+position = Vector2( -66.1846, -0.829132 )
+
+[node name="Coin5" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
+position = Vector2( 61.8154, -0.829132 )
+
+[node name="Coin6" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
+position = Vector2( -2.18463, -64.8291 )
+
+[node name="Coin2" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
+position = Vector2( -2.18463, 63.1709 )
+
+[node name="Coin13" parent="Coins/CoinsGroup2" instance=ExtResource( 8 )]
+position = Vector2( -130.185, 63.1709 )
+
+[node name="CoinsGroup3" type="Node2D" parent="Coins"]
+position = Vector2( 2139.75, -237.006 )
+
+[node name="Coin8" parent="Coins/CoinsGroup3" instance=ExtResource( 8 )]
+position = Vector2( 125.71, 7.7002 )
+
+[node name="Coin7" parent="Coins/CoinsGroup3" instance=ExtResource( 8 )]
+position = Vector2( -2.28955, 7.7002 )
+
+[node name="Coin14" parent="Coins/CoinsGroup3" instance=ExtResource( 8 )]
+position = Vector2( -130.29, 7.7002 )
+
+[node name="Portal" parent="." instance=ExtResource( 12 )]
+position = Vector2( 4041.04, 806.461 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 526.971, 782.63 )
+
+[node name="Gui" parent="." instance=ExtResource( 7 )]
+layer = 0
+
+[node name="Joystick" parent="." instance=ExtResource( 1 )]
+
+[node name="Music" type="Node" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Music" groups=[
+"BGM",
+]]
+stream = ExtResource( 4 )
+volume_db = -15.0
+autoplay = true
+script = ExtResource( 13 )
+
+[node name="LifeUp" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 9 )
+volume_db = -15.0
+
+[editable path="Portal"]
