@@ -10,10 +10,10 @@
 [ext_resource path="res://GFX/Environment/ground_snow_small.png" type="Texture" id=8]
 [ext_resource path="res://GFX/Environment/grounds.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 192, 44 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 20, 44 )
 
 [node name="PlatformTiles" type="Node2D"]
@@ -51,7 +51,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_seamless/StaticBody2D"]
 position = Vector2( 0.800003, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 23 )
 
 [node name="grass_left" type="Sprite" parent="."]
 position = Vector2( -88, 512 )
@@ -66,7 +66,7 @@ position = Vector2( 108, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_left/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="grass_right" type="Sprite" parent="."]
 position = Vector2( 424, 512 )
@@ -80,7 +80,7 @@ position = Vector2( 20, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_right/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="cake" type="Sprite" parent="."]
 position = Vector2( 192, 432 )
@@ -114,7 +114,7 @@ position = Vector2( 192, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cake_seamless/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 23 )
 
 [node name="cake_left" type="Sprite" parent="."]
 position = Vector2( -88, 608 )
@@ -129,7 +129,7 @@ position = Vector2( 108, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cake_left/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="cake_right" type="Sprite" parent="."]
 position = Vector2( 424, 608 )
@@ -143,7 +143,7 @@ position = Vector2( 20, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cake_right/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="snow" type="Sprite" parent="."]
 position = Vector2( 640, 176 )
@@ -177,7 +177,7 @@ position = Vector2( 192, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snow_seamless/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 23 )
 
 [node name="snow_left" type="Sprite" parent="."]
 position = Vector2( -88, 704 )
@@ -192,7 +192,7 @@ position = Vector2( 108, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snow_left/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="snow_right" type="Sprite" parent="."]
 position = Vector2( 424, 704 )
@@ -206,7 +206,7 @@ position = Vector2( 20, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snow_right/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="sand" type="Sprite" parent="."]
 position = Vector2( 640, 432 )
@@ -236,11 +236,12 @@ region_enabled = true
 region_rect = Rect2( 40, 128, 384, 92 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="sand_seamless"]
+modulate = Color( 0.447059, 0.0509804, 0.0509804, 1 )
 position = Vector2( 192, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sand_seamless/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 23 )
 
 [node name="sand_left" type="Sprite" parent="."]
 position = Vector2( -88, 704 )
@@ -255,7 +256,7 @@ position = Vector2( 108, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sand_left/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="sand_right" type="Sprite" parent="."]
 position = Vector2( 424, 704 )
@@ -269,7 +270,7 @@ position = Vector2( 20, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sand_right/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="wood_seamless" type="Sprite" parent="."]
 position = Vector2( 40, 800 )
@@ -283,7 +284,7 @@ position = Vector2( 192, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wood_seamless/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 23 )
 
 [node name="wood_left" type="Sprite" parent="."]
 position = Vector2( -88, 800 )
@@ -298,7 +299,7 @@ position = Vector2( 108, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wood_left/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )
 
 [node name="right_right" type="Sprite" parent="."]
 position = Vector2( 424, 800 )
@@ -312,4 +313,4 @@ position = Vector2( 20, 44 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_right/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 20 )

@@ -14,7 +14,8 @@ func manage_collision():
 	var collider = $Area2D.get_overlapping_bodies()
 	for objects in collider:
 		if objects.name == "Player":
-			get_tree().call_group("GameState", "hurt")
+#			get_tree().call_group("GameState", "hurt")
+			objects.hurt()
 		queue_free()
 	
 func _on_VisibilityNotifier2D_screen_exited():

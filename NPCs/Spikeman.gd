@@ -39,6 +39,7 @@ func check_rim():
 		direction *= -1
 		flip = !flip
 		$RayCast2D.position.x *= -1
+		$RayCast2D.cast_to.x *= -1
 		motion.x = 0
 		yield(get_tree(),"idle_frame")
 		idle = true
@@ -48,6 +49,8 @@ func check_wall():
 	if is_on_wall():
 		direction *= -1
 		flip = !flip
+		$RayCast2D.position.x *= -1
+		$RayCast2D.cast_to.x *= -1
 		motion.x = 0
 		yield(get_tree(),"idle_frame")
 		idle = true

@@ -94,7 +94,7 @@ func animate():
 	
 func hurt():
 	position.y -= 6
-	yield(get_tree(),"idle_frame")
+	get_tree().call_group("GameState", "lose_lives")
 	motion.y = -JUMP_SPEED
 	hurt = true
 	$AnimationPlayer.play("Flicker")
