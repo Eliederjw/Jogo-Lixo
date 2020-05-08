@@ -16,6 +16,7 @@ var lives = 0
 var coins = 0
 var player = 0
 
+
 func new_game():
 	lives = STARTING_LIVES
 	coins = STARTING_COINS
