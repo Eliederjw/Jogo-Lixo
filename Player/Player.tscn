@@ -42,7 +42,7 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 light_mask = 0
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 2, 2 )
 limit_bottom = 3000
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
