@@ -21,6 +21,9 @@ const BOOST_MULTIPLIER = 1.5 #1.5
 signal animate
 signal offset
 
+func _process(delta):
+	pass
+	
 func _physics_process(delta):
 	move(move_enable)
 	jump(jump_enable)
