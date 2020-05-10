@@ -1,6 +1,6 @@
 extends Node2D
 
-var lives = 10#Global.lives
+var lives = 10
 var coins = Global.coins
 var lives_up_coins = 30
 var level_coins_total = 0
