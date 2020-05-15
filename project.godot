@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Jogo Lixo Game"
+config/name="Jogo Lixo"
 run/main_scene="res://Screens/StartScreen.tscn"
 boot_splash/image="res://GFX/Splash/Jogo Lixo Splash.png"
 boot_splash/bg_color=Color( 0.313726, 0.466667, 0.454902, 1 )
