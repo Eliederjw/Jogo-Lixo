@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/TileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=5]
@@ -20,15 +19,6 @@ script = ExtResource( 6 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 128, 128 )
-collision_layer = 0
-collision_mask = 0
-format = 1
-tile_data = PoolIntArray( -851923, 0, 0, -589807, 15, 0, -589806, 14, 0, -589803, 14, 0, -589800, 14, 0, -589797, 16, 0, -589779, 0, 0, -327669, 15, 0, -327668, 14, 0, -327665, 14, 0, -327662, 16, 0, -327653, 0, 0, -327642, 15, 0, -327641, 14, 0, -327638, 14, 0, -327635, 14, 0, -327632, 16, 0, -1, 15, 0, -65536, 14, 0, -65533, 14, 0, -65530, 14, 0, -65527, 14, 0, -65524, 16, 0, -65510, 15, 0, -65509, 14, 0, -65506, 14, 0, -65503, 14, 0, -65500, 14, 0, -65497, 14, 0, -65494, 14, 0, -65491, 14, 0, -65488, 16, 0 )
-
-[node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 128, 128 )
 collision_layer = 2
