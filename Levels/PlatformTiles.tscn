@@ -11,17 +11,10 @@
 [ext_resource path="res://GFX/Environment/grounds.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-<<<<<<< HEAD
-extents = Vector2( 192, 64 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 64, 64 )
-=======
 extents = Vector2( 64, 64 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 192, 64 )
->>>>>>> Elieder_Version
 
 [node name="PlatformTiles" type="Node2D"]
 
@@ -93,42 +86,20 @@ position = Vector2( 128, 512 )
 texture = ExtResource( 9 )
 centered = false
 region_enabled = true
-<<<<<<< HEAD
-region_rect = Rect2( 128, 0, 384, 128 )
-=======
 region_rect = Rect2( 128, 136, 384, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="grass_seamless"]
 position = Vector2( 192, 64 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_seamless/StaticBody2D"]
-<<<<<<< HEAD
-shape = SubResource( 1 )
-
-[node name="grass_left" type="Sprite" parent="."]
-=======
 shape = SubResource( 2 )
 
 [node name="grass_edge" type="Sprite" parent="."]
->>>>>>> Elieder_Version
 position = Vector2( 0, 512 )
 texture = ExtResource( 9 )
 centered = false
 region_enabled = true
-<<<<<<< HEAD
-region_rect = Rect2( 0, 0, 128, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="grass_left"]
-position = Vector2( 64, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_left/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="grass_right" type="Sprite" parent="."]
-=======
 region_rect = Rect2( 0, 136, 128, 128 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="grass_edge"]
@@ -139,29 +110,18 @@ collision_layer = 2
 shape = SubResource( 1 )
 
 [node name="grass_corner" type="Sprite" parent="."]
->>>>>>> Elieder_Version
 position = Vector2( 512, 512 )
 texture = ExtResource( 9 )
 centered = false
 region_enabled = true
-<<<<<<< HEAD
-region_rect = Rect2( 512, 0, 128, 128 )
-=======
 region_rect = Rect2( 1216, 136, 128, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="grass_corner"]
 position = Vector2( 64, 64 )
 collision_layer = 2
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_right/StaticBody2D"]
-position = Vector2( 44, 20 )
-shape = SubResource( 2 )
-=======
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_corner/StaticBody2D"]
 shape = SubResource( 1 )
->>>>>>> Elieder_Version
 
 [node name="sand" type="Sprite" parent="."]
 position = Vector2( 640, 432 )
@@ -183,42 +143,6 @@ collision_layer = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sand_small/StaticBody2D3"]
 polygon = PoolVector2Array( -77.7567, 39.2365, 72.7091, 50.7266, 100.5, -18.6879, 100.5, -50, -100, -50, -100, -18.6879 )
 
-<<<<<<< HEAD
-[node name="cake_seamless" type="Sprite" parent="."]
-position = Vector2( 128, 656 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 128, 136, 384, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="cake_seamless"]
-position = Vector2( 192, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cake_seamless/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="cake_left" type="Sprite" parent="."]
-position = Vector2( 0, 656 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 136, 128, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="cake_left"]
-position = Vector2( 64, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cake_left/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="cake_right" type="Sprite" parent="."]
-position = Vector2( 512, 656 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 512, 136, 128, 128 )
-=======
 [node name="sand_seamless" type="Sprite" parent="."]
 position = Vector2( 128, 672 )
 texture = ExtResource( 9 )
@@ -253,20 +177,13 @@ texture = ExtResource( 9 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 1216, 272, 128, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="sand_corner"]
 position = Vector2( 64, 64 )
 collision_layer = 2
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cake_right/StaticBody2D"]
-position = Vector2( 44, 20 )
-shape = SubResource( 2 )
-=======
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sand_corner/StaticBody2D"]
 shape = SubResource( 1 )
->>>>>>> Elieder_Version
 
 [node name="snow" type="Sprite" parent="."]
 position = Vector2( 640, 176 )
@@ -289,49 +206,17 @@ collision_layer = 2
 polygon = PoolVector2Array( -77.7567, 39.2365, 72.7091, 50.7266, 100.5, -18.6879, 100.5, -50, -100, -50, -100, -18.6879 )
 
 [node name="snow_seamless" type="Sprite" parent="."]
-<<<<<<< HEAD
-position = Vector2( 128, 800 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 128, 272, 384, 128 )
-=======
 position = Vector2( 128, 832 )
 texture = ExtResource( 9 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 128, 408, 384, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="snow_seamless"]
 position = Vector2( 192, 64 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snow_seamless/StaticBody2D"]
-<<<<<<< HEAD
-shape = SubResource( 1 )
-
-[node name="snow_left" type="Sprite" parent="."]
-position = Vector2( 0, 800 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 272, 128, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="snow_left"]
-position = Vector2( 64, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="snow_left/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="snow_right" type="Sprite" parent="."]
-position = Vector2( 512, 800 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 512, 272, 128, 128 )
-=======
 shape = SubResource( 2 )
 
 [node name="snow_edge" type="Sprite" parent="."]
@@ -354,20 +239,13 @@ texture = ExtResource( 9 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 1216, 408, 128, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="snow_corner"]
 position = Vector2( 64, 64 )
 collision_layer = 2
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" type="CollisionShape2D" parent="snow_right/StaticBody2D"]
-position = Vector2( 44, 20 )
-shape = SubResource( 2 )
-=======
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snow_corner/StaticBody2D"]
 shape = SubResource( 1 )
->>>>>>> Elieder_Version
 
 [node name="cake" type="Sprite" parent="."]
 position = Vector2( 192, 432 )
@@ -389,42 +267,6 @@ collision_layer = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cake_small/StaticBody2D"]
 polygon = PoolVector2Array( -77.7567, 39.2365, 72.7091, 50.7266, 100.5, -18.6879, 100.5, -50, -100, -50, -100, -18.6879 )
 
-<<<<<<< HEAD
-[node name="sand_seamless" type="Sprite" parent="."]
-position = Vector2( 128, 944 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 128, 408, 384, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="sand_seamless"]
-position = Vector2( 192, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sand_seamless/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="sand_left" type="Sprite" parent="."]
-position = Vector2( 0, 944 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 408, 128, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="sand_left"]
-position = Vector2( 64, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sand_left/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="sand_right" type="Sprite" parent="."]
-position = Vector2( 512, 944 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 512, 408, 128, 128 )
-=======
 [node name="cake_seamless" type="Sprite" parent="."]
 position = Vector2( 128, 992 )
 texture = ExtResource( 9 )
@@ -459,24 +301,11 @@ texture = ExtResource( 9 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 1216, 544, 128, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cake_corner"]
 position = Vector2( 64, 64 )
 collision_layer = 2
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sand_right/StaticBody2D"]
-position = Vector2( 44, 20 )
-shape = SubResource( 2 )
-
-[node name="wood_seamless" type="Sprite" parent="."]
-position = Vector2( 128, 1088 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 128, 544, 384, 128 )
-=======
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cake_corner/StaticBody2D"]
 shape = SubResource( 1 )
 
@@ -486,45 +315,12 @@ texture = ExtResource( 9 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 128, 680, 384, 128 )
->>>>>>> Elieder_Version
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wood_seamless"]
 position = Vector2( 192, 64 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wood_seamless/StaticBody2D"]
-<<<<<<< HEAD
-shape = SubResource( 1 )
-
-[node name="wood_left" type="Sprite" parent="."]
-position = Vector2( 0, 1088 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 544, 128, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="wood_left"]
-position = Vector2( 64, 64 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wood_left/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="wood_rigtt" type="Sprite" parent="."]
-position = Vector2( 512, 1088 )
-texture = ExtResource( 9 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 512, 544, 128, 128 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="wood_rigtt"]
-position = Vector2( 20, 44 )
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wood_rigtt/StaticBody2D"]
-position = Vector2( 44, 20 )
-shape = SubResource( 2 )
-=======
 shape = SubResource( 2 )
 
 [node name="wood_edge" type="Sprite" parent="."]
@@ -554,4 +350,3 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wood_corner/StaticBody2D"]
 shape = SubResource( 1 )
->>>>>>> Elieder_Version

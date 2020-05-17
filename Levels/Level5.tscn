@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://SFX/Chiptune_Adventures_2.ogg" type="AudioStream" id=1]
 [ext_resource path="res://SFX/BGM.gd" type="Script" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Levels/Tile_Set.tres" type="TileSet" id=11]
 [ext_resource path="res://SFX/life_up.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=13]
-[ext_resource path="res://NPCs/SpikemanJump.tscn" type="PackedScene" id=14]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource( 3 )
@@ -60,11 +59,6 @@ position = Vector2( 11315.9, -5839.97 )
 
 [node name="Spikeman2" parent="SpikeMen" instance=ExtResource( 6 )]
 position = Vector2( 6336, -3796 )
-
-[node name="SpikemenJump" type="Node" parent="."]
-
-[node name="SpikemanJump" parent="SpikemenJump" instance=ExtResource( 14 )]
-position = Vector2( 14016, -5984 )
 
 [node name="Coins" type="Node" parent="."]
 
@@ -217,9 +211,6 @@ position = Vector2( 16198, -5981.31 )
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( 178.018, -357.399 )
-
-[node name="PlayerAnimation" parent="Player" index="1"]
-frame = 0
 
 [node name="Gui" parent="." instance=ExtResource( 4 )]
 

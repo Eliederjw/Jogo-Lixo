@@ -16,13 +16,8 @@
 [node name="Level1" type="Node2D"]
 script = ExtResource( 6 )
 __meta__ = {
-<<<<<<< HEAD
-"_edit_horizontal_guides_": [ -240.691, -754.039 ],
-"_edit_vertical_guides_": [ 93.001, 1562.98, 1496.15, 2723.17, 2654.56, 4655.01 ]
-=======
 "_edit_horizontal_guides_": [  ],
 "_edit_vertical_guides_": [  ]
->>>>>>> Elieder_Version
 }
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 11 )]
