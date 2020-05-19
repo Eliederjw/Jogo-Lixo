@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Hazards/Hazards.gd" type="Script" id=1]
+[ext_resource path="res://NPCs/Bananaman.gd" type="Script" id=2]
+[ext_resource path="res://NPCs/BananamanAnimate.gd" type="Script" id=3]
+[ext_resource path="res://GFX/Enemies/Bananaman_stand2.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Enemies/Bananaman_stand1.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Enemies/Bananaman_jump1.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Enemies/Bananaman_jump2.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "jump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "stand",
+"speed": 4.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 46.0253
+height = 10.4183
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 37.0244
+height = 73.0794
+
+[node name="Bananaman" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="BananamanAnimate" type="AnimatedSprite" parent="."]
+position = Vector2( -14.7643, -19.0948 )
+frames = SubResource( 1 )
+animation = "stand"
+playing = true
+script = ExtResource( 3 )
+
+[node name="BananCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 26.0195 )
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource( 1 )
+
+[node name="BananaArea" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 3.67548 )
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="animate" from="." to="BananamanAnimate" method="_on_Bananaman_animate"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_SpikeTop_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -13,9 +13,8 @@
 [ext_resource path="res://SFX/life_up.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=14]
-[ext_resource path="res://NPCs/SpikemanJump.tscn" type="PackedScene" id=15]
+[ext_resource path="res://NPCs/Bananaman.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/Tile_Set.tres" type="TileSet" id=16]
-
 
 [node name="Level6" type="Node2D"]
 position = Vector2( 0, 1642.69 )
@@ -70,41 +69,42 @@ position = Vector2( 5438.27, -3895.07 )
 [node name="SpikeTop2" parent="Clouds/SpikMan" instance=ExtResource( 5 )]
 position = Vector2( 6327.01, -4915.45 )
 
-[node name="SpikeMen" type="Node" parent="."]
+[node name="Canmen" type="Node" parent="."]
 
-[node name="Spikeman" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 5322.49, -423.688 )
 
-[node name="Spikeman2" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman2" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 5063.96, -1910.17 )
 
-[node name="Spikeman3" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman3" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 7234, -4978.58 )
 
-[node name="Spikeman4" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman4" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 11441.4, -6002.43 )
 
-[node name="Spikeman6" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman6" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 12346.8, -7666.82 )
 
-[node name="Spikeman7" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman7" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 10825.3, -7666.82 )
 
-[node name="Spikeman8" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman8" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 9268.98, -7666.82 )
 
-[node name="Spikeman9" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman9" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 7767.21, -7666.82 )
 
-[node name="Spikeman5" parent="SpikeMen" instance=ExtResource( 6 )]
+[node name="Canman5" parent="Canmen" instance=ExtResource( 6 )]
 position = Vector2( 13122.6, -6519.37 )
 
-[node name="SpikeMenJump" type="Node" parent="."]
+[node name="Bananamen" type="Node" parent="."]
 
-[node name="SpikemanJump" parent="SpikeMenJump" instance=ExtResource( 15 )]
+[node name="Bananaman" parent="Bananamen" instance=ExtResource( 15 )]
 position = Vector2( 4792.06, -2901.52 )
+jump_speed = 3500
 
-[node name="SpikemanJump2" parent="SpikeMenJump" instance=ExtResource( 15 )]
+[node name="Bananaman2" parent="Bananamen" instance=ExtResource( 15 )]
 position = Vector2( 14101.4, -6485.93 )
 
 [node name="Coins" type="Node" parent="."]
