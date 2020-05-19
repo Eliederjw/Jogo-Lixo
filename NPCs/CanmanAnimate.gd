@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-func _on_Spikeman_animate(idle, flip):
+func _on_Canman_animate(idle, flip):
 	if idle == false:
 		play("walk")
 	else:

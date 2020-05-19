@@ -5,8 +5,8 @@
 [ext_resource path="res://GFX/Enemies/canman_walk1.png" type="Texture" id=3]
 [ext_resource path="res://GFX/Enemies/canman_walk2.png" type="Texture" id=4]
 [ext_resource path="res://Hazards/Hazards.gd" type="Script" id=5]
-[ext_resource path="res://NPCs/Spikeman.gd" type="Script" id=6]
-[ext_resource path="res://NPCs/SpikemanAnimate.gd" type="Script" id=7]
+[ext_resource path="res://NPCs/Canman.gd" type="Script" id=6]
+[ext_resource path="res://NPCs/CanmanAnimate.gd" type="Script" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -33,7 +33,7 @@ collision_layer = 16
 collision_mask = 2
 script = ExtResource( 6 )
 
-[node name="SpikemanAnimate" type="AnimatedSprite" parent="."]
+[node name="CanmanAnimate" type="AnimatedSprite" parent="."]
 position = Vector2( -0.836243, 0.57107 )
 frames = SubResource( 1 )
 animation = "stand"
@@ -42,7 +42,7 @@ playing = true
 offset = Vector2( 0, -1.103 )
 script = ExtResource( 7 )
 
-[node name="SpikeCollision" type="CollisionShape2D" parent="."]
+[node name="CanCollision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 29.0402 )
 shape = SubResource( 2 )
@@ -57,12 +57,12 @@ collision_mask = 2
 collision_layer = 4
 script = ExtResource( 5 )
 
-[node name="SpikeArea" type="CollisionShape2D" parent="Area2D"]
+[node name="CanArea" type="CollisionShape2D" parent="Area2D"]
 visible = false
 position = Vector2( 0, 3.67548 )
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
-[connection signal="animate" from="." to="SpikemanAnimate" method="_on_Spikeman_animate"]
+[connection signal="animate" from="." to="CanmanAnimate" method="_on_Canman_animate"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_SpikeTop_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
