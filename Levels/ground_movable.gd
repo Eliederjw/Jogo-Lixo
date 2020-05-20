@@ -2,7 +2,6 @@ extends Node2D
 
 const UP = Vector2(0,-1)
 
-var mydelta = Vector2(0,0)
 export var hspeed = 0
 export var vspeed = 0
 export var limit_left = 0
@@ -21,9 +20,11 @@ func _ready():
 	motion.y = vspeed
 	set_one_way_collision(bottom_collision)
 
-
 func _physics_process(delta):
-	mydelta = delta
+	check_limits(delta)
+	move(delta)
+	
+func check_limits(delta):
 	if $Movable_Platform.position.x > limit_right:
 		motion.x = -hspeed
 	if $Movable_Platform.position.x < limit_left:
@@ -32,12 +33,10 @@ func _physics_process(delta):
 		motion.y = -vspeed
 	if $Movable_Platform.position.y < limit_up:
 		motion.y = vspeed
-	print ($Movable_Platform.position.y)
-	move()
 	
-func move():
-	$Movable_Platform.position.x += motion.x * mydelta
-	$Movable_Platform.position.y += motion.y * mydelta
+func move(delta):
+	$Movable_Platform.position.x += motion.x * delta
+	$Movable_Platform.position.y += motion.y * delta
 
 func set_one_way_collision(status):
 	if status == true:
