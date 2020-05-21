@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Screens/Quit.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Quit_Screen" type="CanvasLayer"]
+layer = 100
+
+[node name="Quit" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -718.5
+margin_top = -345.5
+margin_right = 718.5
+margin_bottom = 345.5
+color = Color( 0.133333, 0.141176, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Quit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Quit/CenterContainer"]
+margin_left = 717.0
+margin_top = 411.0
+margin_right = 1531.0
+margin_bottom = 669.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContinue" type="CenterContainer" parent="Quit/CenterContainer/VBoxContainer"]
+margin_right = 814.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Continue" type="LinkButton" parent="Quit/CenterContainer/VBoxContainer/CenterContinue"]
+margin_left = 114.0
+margin_right = 699.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.176471, 0.513726, 0.0705882, 1 )
+text = "CONTINUE"
+underline = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterQuit" type="CenterContainer" parent="Quit/CenterContainer/VBoxContainer"]
+margin_top = 131.0
+margin_right = 814.0
+margin_bottom = 258.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Quit" type="LinkButton" parent="Quit/CenterContainer/VBoxContainer/CenterQuit"]
+margin_right = 814.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.74902, 0.223529, 0.0392157, 1 )
+text = "SAIR DO JOGO"
+underline = 2
+[connection signal="pressed" from="Quit/CenterContainer/VBoxContainer/CenterContinue/Continue" to="Quit" method="_on_Continue_pressed"]
+[connection signal="pressed" from="Quit/CenterContainer/VBoxContainer/CenterQuit/Quit" to="Quit" method="_on_Quit_pressed"]

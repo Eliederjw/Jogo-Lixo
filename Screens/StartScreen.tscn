@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Screens/StartScreen.gd" type="Script" id=1]
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://GFX/Players/trash2_selected.png" type="Texture" id=7]
 [ext_resource path="res://SFX/Sound FXs001.ogg" type="AudioStream" id=8]
 [ext_resource path="res://SFX/Sound FXs002.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Screens/Quit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://GFX/HUD/quit_button_pressed.png" type="Texture" id=11]
+[ext_resource path="res://GFX/HUD/quit_button_normal.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -197,8 +200,31 @@ stream = ExtResource( 8 )
 
 [node name="JogarSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
+[node name="Quit_Screen" parent="." instance=ExtResource( 10 )]
+
+[node name="Quit" parent="Quit_Screen" index="0"]
+visible = false
+
+[node name="Container" type="Container" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Container"]
+position = Vector2( -130.642, 43.9626 )
+scale = Vector2( 0.197628, 0.197628 )
+normal = ExtResource( 12 )
+pressed = ExtResource( 11 )
+action = "ui_cancel"
 [connection signal="pressed" from="VBoxContainer/HBoxBunnies/bunny1" to="." method="_on_bunny1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxBunnies/bunny2" to="." method="_on_bunny2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxNewGame/CenterContainer/bttNewGame" to="." method="_on_bttNewGame_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContinue/CenterContainer2/bttContinue" to="." method="_on_bttContinue_pressed"]
 [connection signal="finished" from="JogarSound" to="." method="_on_JogarSound_finished"]
+
+[editable path="Quit_Screen"]
