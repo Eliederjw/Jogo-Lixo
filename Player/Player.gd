@@ -8,13 +8,14 @@ var dance_enable = false
 var air_jump = 1
 var speed_boost = 0
 var hurt = false
+var dead = false
 
 const GRAVITY = 200 #300
 const FRICTION = 0.9
 const SPEED = 1200 #1100
 const UP = Vector2(0,-1)
 const JUMP_SPEED = 4000 # 5000
-const WORLD_LIMIT = 3000
+const WORLD_LIMIT = 1000
 const BOOST_MULTIPLIER = 1.5 #1.5
 
 
@@ -39,7 +40,7 @@ func apply_gravity(status):
 	if gravity == true:
 	
 		if position.y > WORLD_LIMIT:
-			get_tree().call_group("GameState", "end_game")
+			dead()
 		if is_on_floor() and motion.y > 0:
 			motion.y = 1
 		if is_on_ceiling():
@@ -90,16 +91,20 @@ func camera_offset():
 	emit_signal("offset")
 
 func animate():
-	emit_signal("animate", motion, is_on_floor(), hurt)
+	emit_signal("animate", motion, is_on_floor(), hurt, dead)
 	
 func hurt():
-	position.y -= 6
-	get_tree().call_group("GameState", "lose_lives")
-	motion.y = -JUMP_SPEED
-	hurt = true
-	$AnimationPlayer.play("Flicker")
-	$Pain.play()
-	
+	if Global.lives == 0:
+		dead()
+	else:
+		position.y -= 6
+		get_tree().call_group("GameState", "lose_lives")
+		motion.y = -JUMP_SPEED
+		hurt = true
+		$FlickerAnimation.play("Flicker")
+		$Pain.play()
+
+		
 func jump_boost(boost):
 	yield(get_tree(),"idle_frame")
 	motion.y = boost * BOOST_MULTIPLIER
@@ -113,4 +118,13 @@ func victory_jump(enable):
 		if is_on_floor():
 			motion.y -= JUMP_SPEED
 	
+func dead():
+	$CollisionShape2D.queue_free()
+	set_physics_process(false)
+	motion = Vector2(0,0)
+	dead = true
+	animate()
+	$Timer.start()
 
+func _on_Timer_timeout():
+	get_tree().call_group("GameState", "end_game")

@@ -1,6 +1,6 @@
 extends Node2D
 
-var lives = 10#Global.lives
+var lives = 1#Global.lives
 var coins = Global.coins
 var lives_up_coins = 30
 var level_coins_total = 0
@@ -15,12 +15,9 @@ func _enter_tree():
 	add_child(load("res://Screens/Pause.tscn").instance())
 		
 func lose_lives():
-	if lives == 0:
-		end_game()
-	else:
-		lives -= 1
-		update_GUI()
-		update_Global()
+	lives -= 1
+	update_GUI()
+	update_Global()
 	
 func update_GUI():
 	get_tree().call_group("GUI", "update_GUI", lives, coins)
