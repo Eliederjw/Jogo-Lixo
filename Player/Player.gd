@@ -10,6 +10,7 @@ var speed_boost = 0
 var hurt = false
 var dead = false
 var deadline = 0
+var invincible = false
 
 const GRAVITY = 200 #300
 const FRICTION = 0.9
@@ -95,15 +96,19 @@ func animate():
 	emit_signal("animate", motion, is_on_floor(), hurt, dead)
 	
 func hurt():
-	if Global.lives == 0:
-		dead()
-	else:
-		position.y -= 6
-		get_tree().call_group("GameState", "lose_lives")
-		motion.y = -JUMP_SPEED
-		hurt = true
-		$FlickerAnimation.play("Flicker")
-		$Pain.play()
+	if !invincible:
+		if Global.lives == 0:
+			dead()
+		else:
+			position.y -= 6
+			get_tree().call_group("GameState", "lose_lives")
+			motion.y = -JUMP_SPEED
+			hurt = true
+			invincible = true
+			$InvincibleTimer.start()
+			$FlickerAnimation.play("Flicker")
+			$Pain.play()
+			
 
 		
 func jump_boost(boost):
@@ -139,3 +144,6 @@ func _on_Timer_timeout():
 	motion.y -= JUMP_SPEED
 	if position.y > deadline:
 		get_tree().call_group("GameState", "end_game")
+
+func _on_InvincibleTimer_timeout():
+	invincible = false
