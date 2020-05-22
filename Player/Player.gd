@@ -9,13 +9,14 @@ var air_jump = 1
 var speed_boost = 0
 var hurt = false
 var dead = false
+var deadline = 0
 
 const GRAVITY = 200 #300
 const FRICTION = 0.9
 const SPEED = 1200 #1100
 const UP = Vector2(0,-1)
 const JUMP_SPEED = 4000 # 5000
-const WORLD_LIMIT = 1000
+const WORLD_LIMIT = 500
 const BOOST_MULTIPLIER = 1.5 #1.5
 
 
@@ -119,12 +120,22 @@ func victory_jump(enable):
 			motion.y -= JUMP_SPEED
 	
 func dead():
-	$CollisionShape2D.queue_free()
-	set_physics_process(false)
-	motion = Vector2(0,0)
-	dead = true
-	animate()
-	$Timer.start()
-
+	if dead == false:
+		$CollisionShape2D.queue_free()
+		set_physics_process(false)
+		motion = Vector2(0,0)
+		jump_enable = false
+		move_enable = false
+		dead = true
+		deadline = position.y + 50
+		animate()
+		get_tree().call_group("BGM", "pause")
+		$Died.play()
+		$Fail.play()
+		$Timer.start()
+		
 func _on_Timer_timeout():
-	get_tree().call_group("GameState", "end_game")
+	set_physics_process((true))
+	motion.y -= JUMP_SPEED
+	if position.y > deadline:
+		get_tree().call_group("GameState", "end_game")
