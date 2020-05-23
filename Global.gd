@@ -16,6 +16,10 @@ var lives = 0
 var coins = 0
 var player = 0
 
+#Used once to calculate the coins total of all levels
+#var used in Count_Total_Coins Scresn
+var coins_total = 0 #total = 246. 
+
 
 func new_game():
 	lives = STARTING_LIVES
@@ -62,3 +66,5 @@ func save_file(filename, content):
 	file.open(filename, File.WRITE)
 	file.store_string(str(content))
 	file.close()
+
+

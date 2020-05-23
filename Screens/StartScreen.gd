@@ -58,6 +58,16 @@ func enable_pressed(bunny):
 	if bunny.is_pressed():
 		bunny.disabled = false
 
-
-
+###Used to count the total number of coins in all levels.
+###Uncomment this function on func _ready
+#func count_levels_coins():
+#	var level
+#	var coins = 1
+#
+#	for coins in Global.levels.size():
+#		level = load(Global.levels[coins]).instance()
+#		add_child(level)
+#		Global.coins_total += level.get_tree().get_nodes_in_group("Coins").size()
+#		level.free()
+#		print (Global.coins_total)
 
