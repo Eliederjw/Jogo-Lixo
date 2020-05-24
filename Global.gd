@@ -18,13 +18,15 @@ var player = 0
 
 #Used once to calculate the coins total of all levels
 #var used in Count_Total_Coins Scresn
-var coins_total = 0 #total = 246. 
+var coins_total = 0 #total = 246.
+var coins_collected = 0
 
 
 func new_game():
 	lives = STARTING_LIVES
 	coins = STARTING_COINS
 	level_number = STARTING_LEVEL_NUMBER
+	coins_collected = 0
 
 func reset_vars():
 	if lives > 0:
@@ -32,8 +34,9 @@ func reset_vars():
 		Global.save_lives()
 	load_lives()
 	load_coins()
+	load_coins_collected()
 
-	#LOAD FUNCTIONS
+	###LOAD FUNCTIONS###
 func load_lives():
 	lives = int(load_file("user://lives.json"))
 	
@@ -42,8 +45,11 @@ func load_level_number():
 		
 func load_coins():
 	coins = int(load_file("user://coins.json"))
+	
+func load_coins_collected():
+	coins_collected = int(load_file("user://coins_collected.json"))
 
-	#SAVE FUNCTIONS
+	###SAVE FUNCTIONS###
 func save_lives():
 	save_file("user://lives.json", lives)
 
@@ -53,7 +59,10 @@ func save_level_number():
 func save_coins():
 	save_file("user://coins.json", coins)
 
-	#BASE FUNCTIONS
+func save_coins_collected():
+	save_file("user://coins_collected.json", coins_collected)
+	
+	###BASE FUNCTIONS###
 func load_file(filename):
 	var file = File.new()
 	file.open(filename, File.READ)

@@ -29,6 +29,7 @@ func update_Global():
 func coins_up():
 	coins += 1
 	level_coins_collected +=1
+	Global.coins_collected += 1
 	update_GUI()
 	update_Global()
 	
@@ -52,6 +53,9 @@ func life_up():
 
 func win_stage():
 	get_tree().change_scene("res://Screens/StageScreen.tscn")
+	
+func congratulations():
+	get_tree().change_scene("res://Screens/Congratulations_Screen.tscn")
 	
 func end_game():
 	Global.reset_vars()

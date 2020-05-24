@@ -13,6 +13,7 @@ func _on_Area2D_body_entered(body):
 		body.dance_enable = true
 		Global.save_lives()
 		Global.save_coins()
+		Global.save_coins_collected()
 		Global.level_number += 1
 		Global.save_level_number()
 		get_tree().call_group("GUI","stop_timer")
@@ -24,8 +25,7 @@ func _on_Area2D_body_entered(body):
 
 func _on_VictorySong_finished():
 	if Global.level_number > Global.levels.size()-1:
-		Global.level_number = 0
-		get_tree().call_group("GameState", "end_game")
+		get_tree().call_group("GameState", "congratulations")
 	else:
 		get_tree().call_group("GameState", "win_stage")
 	

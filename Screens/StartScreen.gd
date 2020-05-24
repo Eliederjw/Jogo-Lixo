@@ -10,17 +10,15 @@ func _ready():
 	Global.load_coins()
 	Global.load_lives()
 	Global.load_level_number()
+	Global.load_coins_collected()
 	if Global.level_number > 1:
 		bttContinue.visible = true
 	else:
-		bttContinue.visible = false	
+		bttContinue.visible = false
 	
 func _on_bttContinue_pressed():
 	if pressed == false:
 		pressed = true
-		Global.load_coins()
-		Global.load_lives()
-		Global.load_level_number()
 		$JogarSound.play()
 		
 func _on_bttNewGame_pressed():
@@ -30,11 +28,15 @@ func _on_bttNewGame_pressed():
 		Global.save_coins()
 		Global.save_lives()
 		Global.save_level_number()
+		Global.save_coins_collected()
 		$JogarSound.play()
 	
 func _on_JogarSound_finished():
-	get_tree().change_scene(Global.levels[Global.level_number])
-	queue_free()	
+	if Global.level_number == Global.levels.size():
+		get_tree().change_scene("res://Screens/Congratulations_Screen.tscn")
+	else:	
+		get_tree().change_scene(Global.levels[Global.level_number])
+		queue_free()
 		
 func _on_bunny1_pressed():
 		$SelectSound.play()
@@ -57,17 +59,4 @@ func uncheck_pressed(bunny):
 func enable_pressed(bunny):
 	if bunny.is_pressed():
 		bunny.disabled = false
-
-###Used to count the total number of coins in all levels.
-###Uncomment this function on func _ready
-#func count_levels_coins():
-#	var level
-#	var coins = 1
-#
-#	for coins in Global.levels.size():
-#		level = load(Global.levels[coins]).instance()
-#		add_child(level)
-#		Global.coins_total += level.get_tree().get_nodes_in_group("Coins").size()
-#		level.free()
-#		print (Global.coins_total)
 

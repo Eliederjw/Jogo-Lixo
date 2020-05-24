@@ -8,7 +8,6 @@ func _on_Area2D_body_entered(body):
 		$AnimationPlayer.play("die")
 		$AudioStreamPlayer.play()
 		get_tree().call_group("GameState", "coins_up")
-
 # Chamado na animação		
 func die():
 	queue_free()
