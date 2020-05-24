@@ -4,6 +4,14 @@ const STARTING_LIVES = 3
 const STARTING_COINS = 0
 const STARTING_LEVEL_NUMBER = 1
 
+var screens = {
+	"start": "res://Screens/StartScreen.tscn",
+	"gameover": "res://Screens/GameOver.tscn",
+	"congratulation": "res://Screens/Congratulations_Screen.tscn",
+	"stage": "res://Screens/StageScreen.tscn",
+	"pause": "res://Screens/Pause.tscn"
+}
+
 var levels = ["res://Screens/StartScreen.tscn",
 			"res://Levels/Level1.tscn",
 			"res://Levels/Level2.tscn",

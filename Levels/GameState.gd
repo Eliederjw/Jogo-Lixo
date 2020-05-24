@@ -12,7 +12,7 @@ func _ready():
 	level_coins_total = get_tree().get_nodes_in_group("Coins").size()
 	
 func _enter_tree():
-	add_child(load("res://Screens/Pause.tscn").instance())
+	add_child(load(Global.screens["pause"]).instance())
 		
 func lose_lives():
 	lives -= 1
@@ -52,12 +52,12 @@ func life_up():
 	update_Global()
 
 func win_stage():
-	get_tree().change_scene("res://Screens/StageScreen.tscn")
+	get_tree().change_scene(Global.screens["stage"])
 	
 func congratulations():
-	get_tree().change_scene("res://Screens/Congratulations_Screen.tscn")
+	get_tree().change_scene(Global.screens["congratulation"])
 	
 func end_game():
 	Global.reset_vars()
-	get_tree().change_scene("res://Screens/GameOver.tscn")
+	get_tree().change_scene(Global.screens["gameover"])
 	

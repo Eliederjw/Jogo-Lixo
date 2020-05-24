@@ -33,7 +33,7 @@ func _on_bttNewGame_pressed():
 	
 func _on_JogarSound_finished():
 	if Global.level_number == Global.levels.size():
-		get_tree().change_scene("res://Screens/Congratulations_Screen.tscn")
+		get_tree().change_scene(Global.screens["congratulation"])
 	else:	
 		get_tree().change_scene(Global.levels[Global.level_number])
 		queue_free()

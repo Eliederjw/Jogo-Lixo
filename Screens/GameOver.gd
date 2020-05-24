@@ -6,5 +6,4 @@ func _on_bttRestart_pressed():
 	
 
 func _on_bttVoltar_pressed():
-	Global.level_number = 0
-	get_tree().change_scene(Global.levels[Global.level_number])
+	get_tree().change_scene(Global.screens["start"])
