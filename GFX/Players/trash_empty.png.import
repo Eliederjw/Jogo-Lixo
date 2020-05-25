@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portal_grey.png-6a8b0312153550d2214de6c243c06f9b.stex"
+path="res://.import/trash_empty.png-23d8574fd1e6252ea5986cbef5c787d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Items/portal_grey.png"
-dest_files=[ "res://.import/portal_grey.png-6a8b0312153550d2214de6c243c06f9b.stex" ]
+source_file="res://GFX/Players/trash_empty.png"
+dest_files=[ "res://.import/trash_empty.png-23d8574fd1e6252ea5986cbef5c787d4.stex" ]
 
 [params]
 

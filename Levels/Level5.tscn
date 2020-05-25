@@ -275,7 +275,7 @@ position = Vector2( -43.7791, -114.577 )
 position = Vector2( 46.4104, -114.576 )
 
 [node name="Portal" parent="." instance=ExtResource( 7 )]
-position = Vector2( 16198, -5981.31 )
+position = Vector2( 16194.7, -6034.76 )
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( 178.018, -357.399 )

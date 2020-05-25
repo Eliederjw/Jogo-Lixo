@@ -39,11 +39,11 @@ func coins_up():
 
 func portal_open():
 	if level_coins_collected > int(level_coins_total*0.8):
-		$Portal/AnimatedSprite.play("open")
+		$Portal/AnimatedSprite.play("full")
 		$Portal/Particles2D.emitting = true
 		$Portal.coins_enough = true
 	else:
-		$Portal/AnimatedSprite.play("closed")
+		$Portal/AnimatedSprite.play("empty")
 		
 func life_up():
 	lives += 1

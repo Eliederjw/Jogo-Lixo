@@ -18,7 +18,6 @@ func _on_Area2D_body_entered(body):
 		Global.save_level_number()
 		get_tree().call_group("GUI","stop_timer")
 		get_tree().call_group("BGM", "pause")
-		$AnimationPlayer.play("PortalStretch")
 		$VictorySong.play()
 		reach_portal = true
 

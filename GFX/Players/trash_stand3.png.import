@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portal_yellow.png-21769b4c77360f0e23d9f33d6c050916.stex"
+path="res://.import/trash_stand3.png-fb4d31fa124ad9340b3203610d25b86c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Items/portal_yellow.png"
-dest_files=[ "res://.import/portal_yellow.png-21769b4c77360f0e23d9f33d6c050916.stex" ]
+source_file="res://GFX/Players/trash_stand3.png"
+dest_files=[ "res://.import/trash_stand3.png-fb4d31fa124ad9340b3203610d25b86c.stex" ]
 
 [params]
 
