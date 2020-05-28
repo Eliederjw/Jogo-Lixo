@@ -1,11 +1,15 @@
 extends CanvasLayer
 
+onready var life_icon = $Control/TextureRect/HBoxContainer/Life/LifeIcon
+
 var timer_stop = false
 
 var time_start = 0
 var time_now = 0
 
+
 func _ready():
+	life_icon.set_frame(Global.player)
 	#timer 
 	time_start = OS.get_unix_time()
 	set_process(true)
