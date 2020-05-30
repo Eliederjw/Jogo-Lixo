@@ -8,23 +8,37 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if reach_portal == false and coins_enough == true:
-		body.jump_enable = false
-		body.move_enable = false
+		disable_player(body)
 		body.dance_enable = true
-		Global.save_lives()
-		Global.save_coins()
-		Global.save_coins_collected()
-		Global.level_number += 1
-		Global.save_level_number()
-		get_tree().call_group("GUI","stop_timer")
-		get_tree().call_group("BGM", "pause")
+		save()
+		stop_timer()
+		pause_BGM()
+		show_stars()
 		$VictorySong.play()
 		reach_portal = true
-
 
 func _on_VictorySong_finished():
 	if Global.level_number > Global.levels.size()-1:
 		get_tree().call_group("GameState", "congratulations")
 	else:
 		get_tree().call_group("GameState", "win_stage")
+		
+func show_stars():
+	get_tree().call_group("GameState", "show_stars")
+
+func disable_player(body):
+	body.jump_enable = false
+	body.move_enable = false
+
+func save():
+	Global.save_lives()
+	Global.save_coins()
+	Global.save_coins_collected()
+	Global.level_number += 1
+	Global.save_level_number()
 	
+func stop_timer():
+	get_tree().call_group("GUI","stop_timer")
+
+func pause_BGM():
+	get_tree().call_group("BGM", "pause")

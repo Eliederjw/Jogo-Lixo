@@ -38,7 +38,7 @@ func coins_up():
 		life_up()
 
 func portal_open():
-	if level_coins_collected > int(level_coins_total*0.8):
+	if level_coins_collected >= int(level_coins_total*0.8):
 		$Portal/AnimatedSprite.play("full")
 		$Portal/Particles2D.emitting = true
 		$Portal.coins_enough = true
@@ -52,7 +52,13 @@ func life_up():
 	update_Global()
 
 func win_stage():
-	get_tree().change_scene(Global.screens["stage"])
+	get_tree().change_scene(Global.screens["stage"])	
+
+func show_stars():
+	var star_screen = load("res://Screens/StarScreen.tscn").instance()
+	add_child(star_screen)
+	
+	star_screen.check_number_of_coins(level_coins_collected, level_coins_total)
 	
 func congratulations():
 	get_tree().change_scene(Global.screens["congratulation"])

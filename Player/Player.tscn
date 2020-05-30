@@ -40,11 +40,11 @@ position = Vector2( 0, 16.6458 )
 shape = SubResource( 1 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
+frame = 1
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 light_mask = 0
 zoom = Vector2( 2, 2 )
-limit_bottom = 3000
 
 [node name="FlickerAnimation" type="AnimationPlayer" parent="."]
 anims/Flicker = SubResource( 2 )
