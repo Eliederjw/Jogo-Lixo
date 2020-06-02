@@ -10,6 +10,10 @@ var speed_boost = 0
 var hurt = false
 var dead = false
 var deadline = 0
+var direction = 0
+
+var teleport = true
+var teleport_collision = false
 var invincible = false
 
 const GRAVITY = 200 #300
@@ -19,18 +23,22 @@ const UP = Vector2(0,-1)
 const JUMP_SPEED = 4000 # 5000
 const WORLD_LIMIT = 500
 const BOOST_MULTIPLIER = 1.5 #1.5
+const TELEPORT_DISPLACEMENT = 350
 
 
 signal animate
 signal offset
 
-func _process(delta):
+func _ready():
 	pass
 	
 func _physics_process(delta):
+	set_direction()
 	move(move_enable)
 	jump(jump_enable)
 	air_jump(jump_enable)
+	teleport_position()
+	teleport(teleport)
 	victory_jump(dance_enable)
 	animate()
 	move_and_slide(motion, UP)
@@ -63,8 +71,8 @@ func jump(enable):
 				hurt = false
 				motion.y = -JUMP_SPEED
 				$Jump.play()
-									
-func air_jump(enable):					
+	
+func air_jump(enable):
 	if enable == true:
 		if Input.is_action_just_pressed("jump") and not is_on_floor() and air_jump > 0:
 				air_jump -= 1
@@ -74,6 +82,20 @@ func air_jump(enable):
 		if is_on_floor():
 			air_jump = 1
 			
+func teleport_position():
+	$TeleportPosition.set_teleport_position(direction, TELEPORT_DISPLACEMENT)
+
+func set_teleport_collision(collision):
+	teleport_collision = collision
+	print(teleport_collision)
+	
+func teleport(enable):
+	if enable == true and teleport_collision == false:
+		if Input.is_action_just_pressed("teleport"):
+			position.x = position.x + $TeleportPosition.position.x
+			teleport = false
+			$TeleportTimer.start()
+		
 func move(enable):
 	if enable == true:
 		if Input.is_action_pressed ("left") and not Input.is_action_pressed ("right"):
@@ -88,6 +110,16 @@ func move(enable):
 			motion.x = speed_boost
 	else: 
 		motion.x = 0
+
+func set_direction():
+	if Input.is_action_pressed ("left"):
+		direction = -1
+			
+	elif Input.is_action_pressed ("right"):
+		direction = 1
+		
+	else:
+		direction = 0
 
 func camera_offset():
 	emit_signal("offset")
@@ -145,5 +177,10 @@ func _on_Timer_timeout():
 	if position.y > deadline:
 		get_tree().call_group("GameState", "end_game")
 
+### TIMERS ###
+
 func _on_InvincibleTimer_timeout():
 	invincible = false
+
+func _on_TeleportTimer_timeout():
+	teleport = true

@@ -75,3 +75,24 @@ pressed = ExtResource( 7 )
 shape = SubResource( 3 )
 action = "jump"
 visibility_mode = 1
+
+[node name="Container3" type="Container" parent="Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -310.457
+margin_top = -113.375
+margin_right = -155.457
+margin_bottom = 41.6251
+rect_scale = Vector2( 1.6, 1.6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="teleport" type="TouchScreenButton" parent="Control/Container3"]
+scale = Vector2( 1, 1 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
+action = "teleport"
+[connection signal="pressed" from="Control/Container3/teleport" to="Control/Container3/teleport" method="_on_teleport_pressed"]
