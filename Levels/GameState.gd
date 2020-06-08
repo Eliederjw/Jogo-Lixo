@@ -6,9 +6,13 @@ var lives_up_coins = 30
 var level_coins_total = 0
 var level_coins_collected = 0
 
+func reach_portal():
+	pass
+
 func _ready():
 	add_to_group("GameState")
 	update_GUI()
+	GlobalInput.enabled = true
 	level_coins_total = get_tree().get_nodes_in_group("Coins").size()
 	
 func _enter_tree():

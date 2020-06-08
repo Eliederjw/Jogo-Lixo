@@ -3,28 +3,39 @@ extends Node2D
 var reach_portal = false
 var coins_enough = false
 
+signal portal_reach
+
+func _ready():
+	connect("portal_reach", GlobalInput,"on_portal_reach")
+	
 func _process(delta):
 	get_tree().call_group("GameState", "portal_open")
 
 func _on_Area2D_body_entered(body):
 	if reach_portal == false and coins_enough == true:
-		disable_player(body)
-		body.dance_enable = true
+		reach_portal = true
+		disable_input()
+		player_dance(body)
 		save()
 		stop_timer()
 		pause_BGM()
 		show_stars()
 		$VictorySong.play()
-		reach_portal = true
-
+		
 func _on_VictorySong_finished():
 	if Global.level_number > Global.levels.size()-1:
 		get_tree().call_group("GameState", "congratulations")
 	else:
 		get_tree().call_group("GameState", "win_stage")
-		
+
+func disable_input():
+	emit_signal("portal_reach", reach_portal)
+
 func show_stars():
 	get_tree().call_group("GameState", "show_stars")
+	
+func player_dance(body):
+	body.dance_enable = true
 
 func disable_player(body):
 	body.jump_enable = false
@@ -42,3 +53,4 @@ func stop_timer():
 
 func pause_BGM():
 	get_tree().call_group("BGM", "pause")
+	

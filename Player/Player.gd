@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
+class_name Player
+
 var motion = Vector2(0,0)
 var gravity = true
 var move_enable = true
-var jump_enable = true
 var dance_enable = false
 var air_jump = 1
 var speed_boost = 0
@@ -13,7 +14,6 @@ var deadline = 0
 var direction = 0
 
 var teleport = true
-var teleport_collision = false
 var invincible = false
 
 const GRAVITY = 200 #300
@@ -25,27 +25,20 @@ const WORLD_LIMIT = 500
 const BOOST_MULTIPLIER = 1.5 #1.5
 const TELEPORT_DISPLACEMENT = 350
 
-
 signal animate
 signal offset
 
 func _ready():
-	pass
-	
+	var abilities = Abilities.new()
+		
 func _physics_process(delta):
-	set_direction()
 	move(move_enable)
-	jump(jump_enable)
-	air_jump(jump_enable)
-	teleport_position()
-	teleport(teleport)
 	victory_jump(dance_enable)
 	animate()
 	move_and_slide(motion, UP)
 	apply_gravity(gravity)
 	apply_friction()
-	
-		
+
 func apply_gravity(status):
 	if gravity == true:
 	
@@ -55,7 +48,7 @@ func apply_gravity(status):
 			motion.y = 1
 		if is_on_ceiling():
 			motion.y = 100
-					
+	
 		else: 
 			motion.y += GRAVITY
 
@@ -63,66 +56,40 @@ func apply_friction():
 	if abs(speed_boost) < 10:
 		speed_boost = 0
 	else: 
-		speed_boost *= 0.9	
+		speed_boost *= 0.9
 
-func jump(enable):
-	if enable == true:
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-				hurt = false
-				motion.y = -JUMP_SPEED
-				$Jump.play()
-	
-func air_jump(enable):
-	if enable == true:
-		if Input.is_action_just_pressed("jump") and not is_on_floor() and air_jump > 0:
-				air_jump -= 1
-				motion.y = 0
-				motion.y -= JUMP_SPEED
-				$Jump.play()
-		if is_on_floor():
-			air_jump = 1
-			
-func teleport_position():
-	$TeleportPosition.set_teleport_position(direction, TELEPORT_DISPLACEMENT)
+func jump():
+	if is_on_floor():
+		hurt = false
+		motion.y = -JUMP_SPEED
+		$Jump.play()
 
-func set_teleport_collision(collision):
-	teleport_collision = collision
-	print(teleport_collision)
-	
-func teleport(enable):
-	if enable == true and teleport_collision == false:
-		if Input.is_action_just_pressed("teleport"):
-			position.x = position.x + $TeleportPosition.position.x
-			teleport = false
-			$TeleportTimer.start()
+func air_jump():
+	if not is_on_floor() and air_jump > 0:
+		air_jump -= 1
+		motion.y = 0
+		motion.y -= JUMP_SPEED
+		$Jump.play()
 		
+	if is_on_floor():
+		air_jump = 1
+	
+func teleport():
+	if teleport == true and $TeleportPosition.collision == false:
+		position.x = position.x + $TeleportPosition.position.x
+		teleport = false
+		$TeleportTimer.start()
+		print($TeleportPosition.collision)
+			
+func set_direction(input_direction):
+	direction = input_direction
+	
 func move(enable):
-	if enable == true:
-		if Input.is_action_pressed ("left") and not Input.is_action_pressed ("right"):
-			motion.x = -SPEED + speed_boost
-			camera_offset()
-			
-		elif Input.is_action_pressed ("right") and not Input.is_action_pressed ("left"):
-			motion.x = SPEED + speed_boost
-			camera_offset()
-		
-		else:
-			motion.x = speed_boost
-	else: 
-		motion.x = 0
-
-func set_direction():
-	if Input.is_action_pressed ("left"):
-		direction = -1
-			
-	elif Input.is_action_pressed ("right"):
-		direction = 1
-		
-	else:
-		direction = 0
-
+	motion.x = (SPEED + speed_boost) * direction
+	camera_offset()
+	
 func camera_offset():
-	emit_signal("offset")
+	emit_signal("offset", direction)
 
 func animate():
 	emit_signal("animate", motion, is_on_floor(), hurt, dead)
@@ -140,9 +107,7 @@ func hurt():
 			$InvincibleTimer.start()
 			$FlickerAnimation.play("Flicker")
 			$Pain.play()
-			
-
-		
+	
 func jump_boost(boost):
 	yield(get_tree(),"idle_frame")
 	motion.y = boost * BOOST_MULTIPLIER
@@ -161,7 +126,6 @@ func dead():
 		$CollisionShape2D.queue_free()
 		set_physics_process(false)
 		motion = Vector2(0,0)
-		jump_enable = false
 		move_enable = false
 		dead = true
 		deadline = position.y + 50
@@ -170,7 +134,7 @@ func dead():
 		$Died.play()
 		$Fail.play()
 		$Timer.start()
-		
+	
 func _on_Timer_timeout():
 	set_physics_process((true))
 	motion.y -= JUMP_SPEED
@@ -184,3 +148,4 @@ func _on_InvincibleTimer_timeout():
 
 func _on_TeleportTimer_timeout():
 	teleport = true
+	
