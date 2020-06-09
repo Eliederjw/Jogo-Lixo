@@ -4,7 +4,6 @@ class_name Player
 
 var motion = Vector2(0,0)
 var gravity = true
-var move_enable = true
 var dance_enable = false
 var air_jump = 1
 var speed_boost = 0
@@ -29,15 +28,16 @@ signal animate
 signal offset
 
 func _ready():
-	var abilities = Abilities.new()
-		
+	pass
+
 func _physics_process(delta):
-	move(move_enable)
+	move()
 	victory_jump(dance_enable)
 	animate()
 	move_and_slide(motion, UP)
 	apply_gravity(gravity)
 	apply_friction()
+	
 
 func apply_gravity(status):
 	if gravity == true:
@@ -75,16 +75,15 @@ func air_jump():
 		air_jump = 1
 	
 func teleport():
-	if teleport == true and $TeleportPosition.collision == false:
-		position.x = position.x + $TeleportPosition.position.x
-		teleport = false
+	if Abilities.has_ability("teleport"):
+		position.x = position.x + Abilities.teleport()
+		Abilities.set_teleport(false)
 		$TeleportTimer.start()
-		print($TeleportPosition.collision)
-			
+
 func set_direction(input_direction):
 	direction = input_direction
 	
-func move(enable):
+func move():
 	motion.x = (SPEED + speed_boost) * direction
 	camera_offset()
 	
@@ -126,7 +125,7 @@ func dead():
 		$CollisionShape2D.queue_free()
 		set_physics_process(false)
 		motion = Vector2(0,0)
-		move_enable = false
+		get_tree().call_group("Input", "disable_input", true)
 		dead = true
 		deadline = position.y + 50
 		animate()
@@ -147,5 +146,5 @@ func _on_InvincibleTimer_timeout():
 	invincible = false
 
 func _on_TeleportTimer_timeout():
-	teleport = true
+	Abilities.set_teleport(true)
 	

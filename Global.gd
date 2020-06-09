@@ -23,6 +23,7 @@ var level_number = 0
 var lives = 0
 var coins = 0
 var player = 0
+var abilities = []
 
 #Used once to calculate the coins total of all levels
 #var used in Count_Total_Coins Scresn
@@ -57,6 +58,9 @@ func load_coins():
 func load_coins_collected():
 	coins_collected = int(load_file("user://coins_collected.json"))
 
+func load_abilities():
+	abilities = load_file_array("abilities.json")
+
 	###SAVE FUNCTIONS###
 func save_lives():
 	save_file("user://lives.json", lives)
@@ -69,6 +73,9 @@ func save_coins():
 
 func save_coins_collected():
 	save_file("user://coins_collected.json", coins_collected)
+
+func save_abilities():
+	save_file_array("abilities.json", abilities)
 	
 	###BASE FUNCTIONS###
 func load_file(filename):
@@ -83,5 +90,19 @@ func save_file(filename, content):
 	file.open(filename, File.WRITE)
 	file.store_string(str(content))
 	file.close()
+
+func load_file_array(filename):
+	var file = File.new()
+	file.open(filename, File.READ)
+	var text = file.get_csv_line()
+	file.close()
+	return text
+	
+func save_file_array(filename, content):
+	var file = File.new()
+	file.open(filename, File.WRITE)
+	file.store_csv_line(content)
+	file.close()
+	
 
 
