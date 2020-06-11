@@ -1,11 +1,10 @@
 extends KinematicBody2D
 
-class_name Player
+class_name PlayerState
 
 var motion = Vector2(0,0)
 var gravity = true
 var dance_enable = false
-var air_jump = 1
 var speed_boost = 0
 var hurt = false
 var dead = false
@@ -23,6 +22,8 @@ const JUMP_SPEED = 4000 # 5000
 const WORLD_LIMIT = 500
 const BOOST_MULTIPLIER = 1.5 #1.5
 const TELEPORT_DISPLACEMENT = 350
+
+enum {HAS_JUMP, JUMP, LAND}
 
 signal animate
 signal offset
@@ -65,20 +66,17 @@ func jump():
 		$Jump.play()
 
 func air_jump():
-	if not is_on_floor() and air_jump > 0:
-		air_jump -= 1
+	if not is_on_floor() and Abilities.air_jump(HAS_JUMP):
 		motion.y = 0
-		motion.y -= JUMP_SPEED
+		motion.y -= Abilities.air_jump(JUMP)
 		$Jump.play()
 		
 	if is_on_floor():
-		air_jump = 1
+		Abilities.air_jump(LAND)
 	
 func teleport():
-	if Abilities.has_ability("teleport"):
-		position.x = position.x + Abilities.teleport()
-		Abilities.set_teleport(false)
-		$TeleportTimer.start()
+	position.x = position.x + Abilities.teleport()
+	$TeleportTimer.start()
 
 func set_direction(input_direction):
 	direction = input_direction
@@ -132,19 +130,21 @@ func dead():
 		get_tree().call_group("BGM", "pause")
 		$Died.play()
 		$Fail.play()
-		$Timer.start()
+		$DeadTimer.start()
+		
+func on_portal_reach():
+	dance_enable = true
 	
-func _on_Timer_timeout():
+### TIMERS ###
+
+func _on_DeadTimer_timeout():
 	set_physics_process((true))
 	motion.y -= JUMP_SPEED
 	if position.y > deadline:
 		get_tree().call_group("GameState", "end_game")
-
-### TIMERS ###
 
 func _on_InvincibleTimer_timeout():
 	invincible = false
 
 func _on_TeleportTimer_timeout():
 	Abilities.set_teleport(true)
-	

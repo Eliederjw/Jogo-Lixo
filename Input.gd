@@ -27,17 +27,19 @@ func move_direction():
 func jump():
 	if Input.is_action_just_pressed("jump"):
 		get_tree().call_group("Player", "jump")
-		get_tree().call_group("Player", "air_jump")
+		if Abilities.has_ability("air_jump"):
+			get_tree().call_group("Player", "air_jump")
 
 func teleport():
 	if Input.is_action_just_pressed("teleport"):
-		get_tree().call_group("Player", "teleport")
+		if Abilities.has_ability("teleport"):
+			get_tree().call_group("Player", "teleport")
 
 func disable_input(disable):
 	direction = 0
 	set_direction()
 	enabled = !disable
 
-func on_portal_reach(status):
-	disable_input(status)
+func on_portal_reach():
+	disable_input(true)
 

@@ -12,7 +12,7 @@ func reach_portal():
 func _ready():
 	add_to_group("GameState")
 	update_GUI()
-	GlobalInput.enabled = true
+	GlobalInput.disable_input(false)
 	level_coins_total = get_tree().get_nodes_in_group("Coins").size()
 	
 func _enter_tree():

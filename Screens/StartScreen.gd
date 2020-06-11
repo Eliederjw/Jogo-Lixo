@@ -25,10 +25,7 @@ func _on_bttNewGame_pressed():
 	if pressed == false:
 		pressed = true
 		Global.new_game()
-		Global.save_coins()
-		Global.save_lives()
-		Global.save_level_number()
-		Global.save_coins_collected()
+		Global.save_game()
 		$JogarSound.play()
 	
 func _on_JogarSound_finished():
