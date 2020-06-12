@@ -24,7 +24,7 @@ var level_number = 0
 var lives = 0
 var coins = 0
 var player = 0
-var abilities = ["air_jump"]
+var abilities = []
 
 #Used once to calculate the coins total of all levels
 #var used in Count_Total_Coins Scresn
@@ -52,14 +52,6 @@ func load_game():
 	load_coins_collected()
 	load_level_number()
 	load_abilities()
-
-func reset_vars():
-	if lives > 0:
-		Global.lives -= 1
-		Global.save_lives()
-	load_lives()
-	load_coins()
-	load_coins_collected()
 
 	###LOAD FUNCTIONS###
 func load_lives():

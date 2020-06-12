@@ -153,7 +153,7 @@ pressed = ExtResource( 7 )
 shape = SubResource( 4 )
 action = "ui_cancel"
 
-[node name="abilities_slot" type="TextureRect" parent="Control"]
+[node name="AbilitiesSlot" type="TextureRect" parent="Control"]
 margin_left = 60.0
 margin_top = 45.0
 margin_right = 560.0
@@ -163,7 +163,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="air_jump_slot" type="TextureRect" parent="Control/abilities_slot"]
+[node name="air_jump_slot" type="TextureRect" parent="Control/AbilitiesSlot"]
 visible = false
 margin_left = 16.093
 margin_top = 2.585
@@ -174,7 +174,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="teleport_slot" type="TextureRect" parent="Control/abilities_slot"]
+[node name="teleport_slot" type="TextureRect" parent="Control/AbilitiesSlot"]
 visible = false
 margin_left = 139.648
 margin_top = 2.58472
@@ -182,7 +182,7 @@ margin_right = 233.648
 margin_bottom = 96.5847
 texture = ExtResource( 9 )
 
-[node name="flight_slot" type="TextureRect" parent="Control/abilities_slot"]
+[node name="flight_slot" type="TextureRect" parent="Control/AbilitiesSlot"]
 visible = false
 margin_left = 264.648
 margin_top = 2.58472
@@ -190,7 +190,7 @@ margin_right = 358.648
 margin_bottom = 96.5847
 texture = ExtResource( 9 )
 
-[node name="beam_slot" type="TextureRect" parent="Control/abilities_slot"]
+[node name="beam_slot" type="TextureRect" parent="Control/AbilitiesSlot"]
 visible = false
 margin_left = 389.648
 margin_top = 2.58472

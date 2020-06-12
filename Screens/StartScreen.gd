@@ -6,20 +6,23 @@ onready var bttContinue = get_node("VBoxContainer/HBoxContinue")
 
 var pressed = false
 
+signal new_game
+signal load_game
+
 func _ready():
-	Global.load_coins()
-	Global.load_lives()
-	Global.load_level_number()
-	Global.load_coins_collected()
+	Global.load_game()
 	if Global.level_number > 1:
 		bttContinue.visible = true
 	else:
 		bttContinue.visible = false
+	connect("new_game", Abilities, "new_game")
+	connect("load_game", Abilities, "load_game")
 	
 func _on_bttContinue_pressed():
 	if pressed == false:
 		pressed = true
 		$JogarSound.play()
+		emit_signal("load_game")
 		
 func _on_bttNewGame_pressed():
 	if pressed == false:
@@ -27,6 +30,7 @@ func _on_bttNewGame_pressed():
 		Global.new_game()
 		Global.save_game()
 		$JogarSound.play()
+		emit_signal("new_game")
 	
 func _on_JogarSound_finished():
 	if Global.level_number == Global.levels.size():

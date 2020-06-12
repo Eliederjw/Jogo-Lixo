@@ -38,9 +38,6 @@ func notify_scripts():
 func show_stars():
 	get_tree().call_group("GameState", "show_stars")
 	
-func player_dance(body):
-	body.dance_enable = true
-	
 func pause_BGM():
 	get_tree().call_group("BGM", "pause")
 	

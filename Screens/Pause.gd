@@ -15,6 +15,5 @@ func _on_StartMenu_pressed():
 	Global.level_number = 0
 	get_tree().change_scene(Global.levels[Global.level_number])
 
-
 func _on_Quit_pressed():
 	get_tree().quit()

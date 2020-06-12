@@ -11,32 +11,33 @@ func reach_portal():
 
 func _ready():
 	add_to_group("GameState")
+	Abilities.turn_on_abilities()
 	update_GUI()
 	GlobalInput.disable_input(false)
 	level_coins_total = get_tree().get_nodes_in_group("Coins").size()
-	
+
 func _enter_tree():
 	add_child(load(Global.screens["pause"]).instance())
-		
+
 func lose_lives():
 	lives -= 1
 	update_GUI()
 	update_Global()
-	
+
 func update_GUI():
 	get_tree().call_group("GUI", "update_GUI", lives, coins)
-	
+
 func update_Global():
 	Global.lives = lives
 	Global.coins = coins
-	
+
 func coins_up():
 	coins += 1
 	level_coins_collected +=1
 	Global.coins_collected += 1
 	update_GUI()
 	update_Global()
-	
+
 	var multiples_of_coins = (coins % lives_up_coins) == 0
 	if multiples_of_coins:
 		life_up()
@@ -48,7 +49,7 @@ func portal_open():
 		$Portal.coins_enough = true
 	else:
 		$Portal/AnimatedSprite.play("empty")
-		
+
 func life_up():
 	lives += 1
 	$Music/LifeUp.play()
@@ -56,18 +57,17 @@ func life_up():
 	update_Global()
 
 func win_stage():
-	get_tree().change_scene(Global.screens["stage"])	
+	get_tree().change_scene(Global.screens["stage"])
 
 func show_stars():
 	var star_screen = load("res://Screens/StarScreen.tscn").instance()
 	add_child(star_screen)
-	
+
 	star_screen.check_number_of_coins(level_coins_collected, level_coins_total)
-	
+
 func congratulations():
 	get_tree().change_scene(Global.screens["congratulation"])
-	
+
 func end_game():
-	Global.reset_vars()
+	Global.load_game()
 	get_tree().change_scene(Global.screens["gameover"])
-	

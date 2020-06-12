@@ -75,8 +75,9 @@ func air_jump():
 		Abilities.air_jump(LAND)
 	
 func teleport():
+	if Abilities.is_on("teleport"):
+		$TeleportTimer.start()
 	position.x = position.x + Abilities.teleport()
-	$TeleportTimer.start()
 
 func set_direction(input_direction):
 	direction = input_direction

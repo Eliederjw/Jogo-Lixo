@@ -1,10 +1,14 @@
 extends CanvasLayer
 
 onready var life_icon = $Control/TextureRect/HBoxContainer/Life/LifeIcon
-onready var air_jump = $Control/TextureRect2/air_jump_slot
-onready var teleport = $Control/TextureRect2/teleport_slot
-onready var flight = $Control/TextureRect2/flight_slot
-onready var beam = $Control/TextureRect2/beam_slot
+
+onready var air_jump = $Control/AbilitiesSlot/air_jump_slot
+onready var teleport = $Control/AbilitiesSlot/teleport_slot
+onready var flight = $Control/AbilitiesSlot/flight_slot
+onready var beam = $Control/AbilitiesSlot/beam_slot
+onready var abilities_slot = $Control/AbilitiesSlot
+
+var abilities = []
 
 func _ready():
 	life_icon.set_frame(Global.player)
@@ -17,16 +21,30 @@ func _process(delta):
 func update_GUI(lives_left, coins):
 	$Control/TextureRect/HBoxContainer/LifeCount.text = str(lives_left)
 	$Control/TextureRect/HBoxContainer/CoinCount.text = str(coins)
-	$Control/abilities_slot.get_child(0).visible = true
 
-func set_air_jump_visible(visible):
-	air_jump.visible = visible
-
-func set_teleport_visible(visible):
-	teleport.visible = visible
+func update_abilities():
+	clear_slots()
+	set_abilities_visible()
 	
-func set_flight_visible(visible):
-	flight.visible = visible
+func set_abilities_visible():
+	for i in abilities:
+		match i:
+			"air_jump":
+				air_jump.visible = true
+			"teleport":
+				teleport.visible = true
+			"flight":
+				flight.visible = true
+			"beam":
+				beam.visible = true
 
-func set_beam_visible(visible):
-	beam.visible = visible
+func clear_slots():
+	var index
+	for i in abilities_slot.get_child_count():
+		abilities_slot.get_child(i).visible = false
+
+func get_abilities_on(abilities_on):
+	abilities = abilities_on
+	update_abilities()
+
+	

@@ -40,9 +40,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
-GlobalInput="*res://Input.gd"
 Abilities="*res://Player/Abilities.gd"
+GlobalInput="*res://Input.gd"
+Global="*res://Global.gd"
 
 [display]
 
