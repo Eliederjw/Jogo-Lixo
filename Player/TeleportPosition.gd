@@ -14,7 +14,7 @@ func _process(delta):
 	check_collision()
 
 func get_direction():
-	direction = GlobalInput.direction
+	direction = GlobalInput.directionx
 
 func set_teleport_position():
 	position.x = DISPLACEMENT * direction

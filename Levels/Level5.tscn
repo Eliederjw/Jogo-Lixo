@@ -281,7 +281,7 @@ position = Vector2( 16194.7, -6034.76 )
 position = Vector2( 178.018, -357.399 )
 
 [node name="PlayerAnimation" parent="Player" index="1"]
-frame = 1
+frame = 0
 
 [node name="Gui" parent="." instance=ExtResource( 4 )]
 

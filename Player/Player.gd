@@ -9,28 +9,32 @@ var speed_boost = 0
 var hurt = false
 var dead = false
 var deadline = 0
-var direction = 0
+var directionx = 0
 
-var teleport = true
+var is_flying = false
 var invincible = false
 
-const GRAVITY = 200 #300
+const GRAVITY = 200 
 const FRICTION = 0.9
-const SPEED = 1200 #1100
+const SPEED = 1200 
 const UP = Vector2(0,-1)
-const JUMP_SPEED = 4000 # 5000
+const JUMP_SPEED = 4000 
 const WORLD_LIMIT = 500
-const BOOST_MULTIPLIER = 1.5 #1.5
-const TELEPORT_DISPLACEMENT = 350
-
-enum {HAS_JUMP, JUMP, LAND}
+const BOOST_MULTIPLIER = 1.5
 
 signal animate
 signal offset
+signal jump
+signal teleport
+signal hurt
+signal dead
 
 func _ready():
-	pass
-
+	connect("jump", Abilities, "on_jump")
+	connect("teleport", Abilities, "on_teleport")
+	connect("hurt", Abilities, "on_hurt")
+	connect("dead", Abilities, "on_dead")
+	
 func _physics_process(delta):
 	move()
 	victory_jump(dance_enable)
@@ -38,10 +42,13 @@ func _physics_process(delta):
 	move_and_slide(motion, UP)
 	apply_gravity(gravity)
 	apply_friction()
-	
+	Abilities.set_is_on_floor(is_on_floor())
+		
+func set_gravity(status):
+	gravity = status
 
 func apply_gravity(status):
-	if gravity == true:
+	if status == true:
 	
 		if position.y > WORLD_LIMIT:
 			dead()
@@ -53,41 +60,45 @@ func apply_gravity(status):
 		else: 
 			motion.y += GRAVITY
 
-func apply_friction():
-	if abs(speed_boost) < 10:
-		speed_boost = 0
-	else: 
-		speed_boost *= 0.9
-
-func jump():
-	if is_on_floor():
-		hurt = false
-		motion.y = -JUMP_SPEED
-		$Jump.play()
-
-func air_jump():
-	if not is_on_floor() and Abilities.air_jump(HAS_JUMP):
-		motion.y = 0
-		motion.y -= Abilities.air_jump(JUMP)
-		$Jump.play()
-		
-	if is_on_floor():
-		Abilities.air_jump(LAND)
-	
-func teleport():
-	if Abilities.is_on("teleport"):
-		$TeleportTimer.start()
-	position.x = position.x + Abilities.teleport()
-
-func set_direction(input_direction):
-	direction = input_direction
+func set_direction(input_directionx):
+	directionx = input_directionx
 	
 func move():
-	motion.x = (SPEED + speed_boost) * direction
+	if not is_flying:
+		motion.x = (SPEED + speed_boost) * directionx
+		camera_offset()
+
+func jump():
+	if is_on_floor() and not is_flying:
+		hurt = false
+		is_flying = false
+		motion.y = -JUMP_SPEED
+		$Jump.play()
+		
+func air_jump(jump_speed):
+	is_flying = false
+	motion.y = 0
+	motion.y -= jump_speed
+	$Jump.play()
+	emit_signal("jump")
+	
+func teleport(teleport_position):
+	is_flying = false
+	emit_signal("teleport")
+	position.x = position.x + teleport_position
+
+func fly(flight_speed, directiony, directionx):
+	is_flying = true
+	motion.y = directiony
+	motion.x = directionx
+	motion = motion * flight_speed
 	camera_offset()
+
+func set_is_flying(status):
+	is_flying = status
 	
 func camera_offset():
-	emit_signal("offset", direction)
+	emit_signal("offset", directionx)
 
 func animate():
 	emit_signal("animate", motion, is_on_floor(), hurt, dead)
@@ -100,6 +111,7 @@ func hurt():
 			position.y -= 6
 			get_tree().call_group("GameState", "lose_lives")
 			motion.y = -JUMP_SPEED
+			emit_signal("hurt")
 			hurt = true
 			invincible = true
 			$InvincibleTimer.start()
@@ -110,6 +122,12 @@ func jump_boost(boost):
 	yield(get_tree(),"idle_frame")
 	motion.y = boost * BOOST_MULTIPLIER
 
+func apply_friction():
+	if abs(speed_boost) < 10:
+		speed_boost = 0
+	else: 
+		speed_boost *= 0.9
+		
 func speed_boost(boost):
 	yield(get_tree(),"idle_frame")
 	speed_boost = boost
@@ -121,11 +139,13 @@ func victory_jump(enable):
 	
 func dead():
 	if dead == false:
+		is_flying = false
 		$CollisionShape2D.queue_free()
 		set_physics_process(false)
 		motion = Vector2(0,0)
 		get_tree().call_group("Input", "disable_input", true)
 		dead = true
+		emit_signal("dead")
 		deadline = position.y + 50
 		animate()
 		get_tree().call_group("BGM", "pause")
@@ -135,6 +155,7 @@ func dead():
 		
 func on_portal_reach():
 	dance_enable = true
+	is_flying = false
 	
 ### TIMERS ###
 
@@ -147,5 +168,3 @@ func _on_DeadTimer_timeout():
 func _on_InvincibleTimer_timeout():
 	invincible = false
 
-func _on_TeleportTimer_timeout():
-	Abilities.set_teleport(true)

@@ -54,9 +54,6 @@ anims/Flicker = SubResource( 2 )
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="TeleportTimer" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="DeadTimer" type="Timer" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
@@ -100,5 +97,4 @@ __meta__ = {
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
 [connection signal="offset" from="." to="Camera2D" method="_on_Player_offset"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
-[connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]
